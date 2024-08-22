@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk/Reward Calculator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <!-- Back Button -->
+    <button class="back-btn" onclick="goBack()">&larr;</button>
+    <h3>Position Calculator</h3>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="totalFound">Total found:</label>
+      <input type="number" class="form-control" id="totalFound" placeholder="Enter total found">
+    </div>
+    <div class="form-group">
+      <label for="riskPercentage">Risk in %:</label>
+      <input type="number" class="form-control" id="riskPercentage" placeholder="Enter risk percentage">
+    </div>
+    <div class="form-group">
+      <label for="leverage">Leverage:</label>
+      <input type="number" class="form-control" id="leverage" placeholder="Enter leverage">
+    </div>
+    <div class="form-group">
+      <label for="stopLossPercentage">Stop loss in %:</label>
+      <input type="number" class="form-control" id="stopLossPercentage" placeholder="Enter stop loss percentage">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="riskRewardToggle" checked>
+      <label class="form-check-label" for="riskRewardToggle">Risk/Reward Calculator</label>
+    </div>
+    <div id="riskRewardSection" class="form-group hidden">
+      <label for="riskReward">Risk/Reward:</label>
+      <input type="number" class="form-control" id="riskReward" value="20.00">
+    </div>
+    <button type="button" class="btn btn-primary btn-block" onclick="calculate()">Calculate</button>
+  </form>
+  <div class="output">
+    <p>
+      <strong>Position Size:</strong>
+      <span id="positionSize">1000.00</span>
+    </p>
+    <p>
+      <strong>Reward Percentage:</strong>
+      <span id="rewardPercentage">20.00%</span>
+    </p>
+  </div>
+</div>
+<script>
+  function calculate() {
+    // Get the selected value from the dropdown
+    var riskRewardValue = document.getElementById('riskReward') ? document.getElementById('riskReward').value : 'N/A';
+    // Display it in the output section
+    document.getElementById('positionSize').innerText = '1000.00';
+    document.getElementById('rewardPercentage').innerText = riskRewardValue + '%';
+  }
+
+  function goBack() {
+    // Function to go back in browser history
+    window.history.back();
+  }
+
+  document.getElementById('riskRewardToggle').addEventListener('change', function() {
+    var riskRewardSection = document.getElementById('riskRewardSection');
+    if (this.checked) {
+      riskRewardSection.classList.remove('hidden');
+    } else {
+      riskRewardSection.classList.add('hidden');
+    }
+  });
+</script>
+</body>
+</html>

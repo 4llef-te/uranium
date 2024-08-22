@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uranium - Simple Form</title>
+    <link rel="stylesheet" href="{% static 'css/cal.css' %}">
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a style="text-decoration:none" href="/">
+        <div class="logo">Uranium</div>
+    </a>
+    <div class="menu-toggle" id="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav id="navbar">
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/calculator">Trade Calculator</a>
+            </li>
+            <li>
+                <a href="#journal">Trade Journal</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section class="form-container" id="form">
+    <div class="form-box">
+        <h1>Position Size Calculator</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Hidden Input to Store Selected Option -->
+            <input type="hidden" name="selectedOption" id="selectedOption" value="percent">
+            <!-- Dropdown Menu -->
+            <div class="form-group">
+                <label for="dropdown">Calculate based on :</label>
+                <select name="calselect" id="dropdown" onchange="handleDropdownChange()">
+                    <option value="percent" >Percentage</option>
+                    <option value="lots" >Lots</option>
+                </select>
+            </div>
+            <!-- Option 1 Form -->
+            <div id="form-option1" class="form-content">
+                <div class="form-group">
+                    <label for="input1">Total Fund:</label>
+                    <input name="fund" type="number" placeholder="Enter total fund">
+                </div>
+                <div class="form-group">
+                    <label for="input2">Risk in %:</label>
+                    <input name="risk" type="number" placeholder="Enter risk in %">
+                </div>
+                <div class="form-group">
+                    <label for="input3">Leverage:</label>
+                    <input name="leverage" type="number" placeholder="Enter leverage">
+                </div>
+                <div class="form-group">
+                    <label for="input4">Stop Loss in %:</label>
+                    <input name="stoploss" type="number" placeholder="Enter stop loss in %">
+                </div>
+                <button class="cta-button">Calculate</button>
+                {% if positionsize %}
+                <!-- Results -->
+                <div class="result">Position size in $: <span>{{ positionsize }}$</span></div>
+                {% endif %}
+            </div>
+            <!-- Option 2 Form -->
+            <div id="form-option2" class="form-content" style="display: none;">
+                <!-- Pair Input Group -->
+                <div class="form-group pair-group">
+                    <label for="pairInput1">Pair:</label>
+                    <div class="input-group">
+                        <input list="pairOptions1" id="pairInput1" placeholder="Select or type...">
+                        <span>/</span>
+                        <input name="pair2" list="pairOptions2" id="pairInput2" placeholder="Select or type...">
+                    </div>
+                    <datalist id="pairOptions1">
+                        {% for item in currencys %}
+                        <option value="{{ item }}">
+                        {% endfor %}
+                    </datalist>
+                    <datalist id="pairOptions2">
+                        {% for item in currencys %}
+                        <option value="{{ item }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="dropdownInput">Select Option:</label>
+                    <input name="accC" list="selectOptions" id="dropdownInput" placeholder="Select or type...">
+                    <datalist id="selectOptions">
+                        {% for item in currencys %}
+                        <option value="{{ item }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <!-- Additional Input Fields -->
+                <div class="form-group">
+                    <label for="input5">Input 5:</label>
+                    <input type="text" id="input5" placeholder="Enter value for input 5">
+                </div>
+                <div class="form-group">
+                    <label for="input6">Input 6:</label>
+                    <input type="text" id="input6" placeholder="Enter value for input 6">
+                </div>
+                <div class="form-group">
+                    <label for="input7">Input 7:</label>
+                    <input type="text" id="input7" placeholder="Enter value for input 7">
+                </div>
+                <!-- Submit Button -->
+                <button class="cta-button" onclick="showOption2Result()">Submit</button>
+                <!-- Results -->
+                <div class="result" id="result3">{{ position}}: <span id="result3-value"></span></div>
+                <div class="result" id="result4">Result 4: <span id="result4-value"></span></div>
+                <div class="result" id="result5">Result 5: <span id="result5-value"></span></div>
+            </div>
+        </form>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2024 Uranium. All rights reserved.</p>
+</footer>
+<script src="{% static 'js/cal.js' %}"></script>
+<script>
+    function handleDropdownChange() {
+        const dropdown = document.getElementById('dropdown');
+        const formOption1 = document.getElementById('form-option1');
+        const formOption2 = document.getElementById('form-option2');
+
+        if (dropdown.value === 'lots') {
+            formOption1.style.display = 'none';
+            formOption2.style.display = 'block';
+        } else {
+            formOption1.style.display = 'block';
+            formOption2.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

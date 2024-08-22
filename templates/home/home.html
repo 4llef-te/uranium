@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uranium - Trade Tools</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
+</head>
+<body>
+<header>
+    <a style="text-decoration:none" href="/">
+        <div class="logo">Uranium</div>
+    </a>
+    <div class="menu-toggle" id="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/calculator">Trade Calculator</a></li>
+            <li><a href="#journal">Trade Journal</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <!-- Particle Background -->
+
+
+    <div class="hero-content">
+        <h1>Welcome to Uranium</h1>
+        <p>Your essential tools for smart trading decisions.</p>
+        <a href="/calculator" class="cta-button">Try the Calculator</a>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="feature" onclick="window.location='/calculator'">
+        <h2>Trade Calculator</h2>
+        <p>Optimize your trades with precise calculations.</p>
+    </div>
+    <div class="feature">
+        <h2>Trade Journal</h2>
+        <p>Keep track of your trades with ease and efficiency.</p>
+    </div>
+    <div class="feature">
+        <h2>About Us</h2>
+        <p>Learn more about our mission to help traders succeed.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Uranium. All rights reserved.</p>
+</footer>
+
+<script src="{% static '/js/home.js' %}"></script>
+<!-- Load Particles.js -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    position: relative;
+    text-align: center;
+}
+
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: #bb86fc;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.menu-btn:hover {
+    color: #ffffff;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    background: #2c2c2c;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.menu-content a {
+    display: block;
+    color: #e0e0e0;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.menu-content a:hover {
+    color: #bb86fc;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.btn-primary {
+    background: linear-gradient(145deg, #3700b3, #6200ea);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 200px; /* Ensure both buttons have the same width */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(145deg, #6200ea, #3700b3);
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+            <div class="menu-content" id="menuContent">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+
+        <div class="btn-container">
+
+            <button id="calculatorbtn" class="btn-primary"  >Button 1</button>
+
+            <button class="btn-primary">Button 2</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menuContent = document.getElementById('menuContent');
+            if (menuContent.style.display === 'block') {
+                menuContent.style.display = 'none';
+            } else {
+                menuContent.style.display = 'block';
+            }
+        }
+    </script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

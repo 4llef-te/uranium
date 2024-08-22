@@ -1,0 +1,253 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #181818;
+    color: #d3d3d3;
+    line-height: 1.6;
+    overflow-y: scroll;
+    background: radial-gradient(circle at center, #1e1e1e 0%, #181818 70%);
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(115deg, rgba(66, 165, 245, 0.3) 15%, rgba(0, 0, 0, 0) 70%),
+    linear-gradient(245deg, rgba(66, 165, 245, 0.15) 25%, rgba(0, 0, 0, 0) 80%);
+    opacity: 0.8;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('particles.png') repeat;
+    animation: moveBackground 30s linear infinite;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 1000px;
+    }
+}
+
+/* Fully Transparent Navbar with Animation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px; /* Increased padding for more spacing */
+    background-color: transparent; /* Fully transparent background */
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out; /* Smooth transition for background and padding */
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.7); /* Add background color on scroll */
+    padding: 10px 30px; /* Slightly decreased padding on scroll */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #42a5f5;
+    text-shadow: 0 0 10px #42a5f5;
+}
+
+/* Navbar Links */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: -30px; /* Adjust the margin to move items further to the left */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 10px 50px;
+    margin-left: -50px; /* Further adjusted margin to move items more to the left */
+}
+
+nav ul li {
+    margin: 0 10px; /* Increased margin for better spacing between items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d3d3d3;
+    transition: color 0.3s, padding 0.3s;
+    font-weight: 500;
+    padding: 10px 5px; /* Increased padding for larger clickable area */
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    color: #42a5f5;
+    background-color: rgba(66, 165, 245, 0.1);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #d3d3d3;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(66, 165, 245, 0.7);
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    background-color: #42a5f5;
+    color: #181818;
+    border: none;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(66, 165, 245, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(66, 165, 245, 0.7);
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: center; /* Center the feature items horizontally */
+    align-items: center; /* Center the feature items vertically */
+    padding: 60px 20px;
+    background-color: #222;
+    text-align: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+}
+
+.feature {
+    width: 30%; /* Width for each feature item */
+    background-color: #2b2b2b;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 10px; /* Add some space around each feature item */
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(66, 165, 245, 0.3);
+}
+
+.feature h2 {
+    margin-bottom: 20px;
+    color: #42a5f5;
+    text-shadow: 0 0 10px rgba(66, 165, 245, 0.7);
+}
+
+.feature p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #b0b0b0;
+}
+/* Footer */
+footer {
+    background-color: #222;
+    padding: 20px 0;
+    text-align: center;
+    color: #d3d3d3;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+body::-webkit-scrollbar-track {
+    background: #303030;
+    border-radius: 0px;
+
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #42a5f5;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #1e88e5;
+
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+        background-color: rgba(34, 34, 34, 0.95); /* Semi-transparent for mobile */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        padding: 20px 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .features {
+        flex-direction: column;
+    }
+
+    .feature {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
