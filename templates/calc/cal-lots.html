@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uranium - Simple Form</title>
+    <link rel="stylesheet" href="{% static 'css/cal/cal-lot.css' %}">
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a style="text-decoration:none" href="/">
+        <div class="logo">Uranium</div>
+    </a>
+    <div class="menu-toggle" id="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav id="navbar">
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/calculator">Trade Calculator</a>
+            </li>
+            <li>
+                <a href="#journal">Trade Journal</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section class="form-container" id="form">
+    <div class="form-box">
+        <h1>Position Size Calculator</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Hidden Input to Store Selected Option -->
+            <input type="hidden" name="hidden" id="hidden" value="percent">
+            <!-- Dropdown Menu -->
+            <div class="form-group">
+                <label for="dropdown">Calculate based on :</label>
+                <select name="calselect" id="dropdown" onchange="location = this.value;" >
+                    <option value="{% url 'calculator:percentage' %}" >Percentage</option>
+                    <option value="lots"  selected="selected">Lots</option>
+                </select>
+            </div>
+
+            <!-- Option 2 Form -->
+            <div id="form-option2" class="form-content" >
+                <!-- Pair Input Group -->
+                <div class="form-group pair-group">
+                    <label for="pairInput1">Pair:</label>
+                    <div class="input-group">
+                        <input name="pair1" list="pairOptions1" id="pairInput1" placeholder="Select">
+                        <span>/</span>
+                        <input name="pair2" list="pairOptions2" id="pairInput2" placeholder="Select">
+                    </div>
+                    <datalist id="pairOptions1">
+                        {% for item in currencys %}
+                        <option value="{{ item }}">
+                        {% endfor %}
+                        <option value="XAU">
+                        <option value="XAG">
+                    </datalist>
+                    <datalist id="pairOptions2">
+                        {% for item in currencys %}
+                        <option value="{{ item }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="dropdownInput">Account currency:</label>
+                    <input name="accC" list="selectOptions" id="dropdownInput" placeholder="Select account base currency">
+                    <datalist id="selectOptions">
+                        {% for item in currencys %}
+                        <option value="{{ item }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <!-- Additional Input Fields -->
+                <div class="form-group">
+                    <label for="input5">Total fund:</label>
+                    <input name="fund" type="text" id="input5" placeholder="Enter total fund">
+                </div>
+                <div class="form-group">
+                    <label for="input6">Risk in %:</label>
+                    <input name="risk" type="text" id="input6" placeholder="Enter risk in %">
+                </div>
+                <div class="form-group">
+                    <label for="input7">Stoploss in pip:</label>
+                    <input name="stop" type="text" id="input7" placeholder="Enter stoploss in pip">
+                </div>
+                <!-- Submit Button -->
+                <button class="cta-button" onclick="showOption2Result()">Submit</button>
+                <!-- Results -->
+                {% if positionsizee %}
+                <div class="result" id="result3">Position Size (lots): {{ positionsizee}} <span id="result3-value"></span></div>
+                <div class="result" id="result4">Position Size (units): {{ units }} <span id="result4-value"></span></div>
+                <div class="result" id="result5">Money at risk: {{ at_risk }} <span id="result5-value"></span></div>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2024 Uranium. All rights reserved.</p>
+</footer>
+<script src="{% static 'js/cal.js' %}"></script>
+
+</body>
+</html>
+
