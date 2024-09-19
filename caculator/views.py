@@ -1,8 +1,10 @@
 from django.shortcuts import render
 import freecurrencyapi
+import os
+from dotenv import load_dotenv,dotenv_values
 
 # Create your views here.
-client = freecurrencyapi.Client('fca_live_cMbpMtpIAOEQJxWJpx2xKALmtjgfHjdlxHDZEqcL')
+client = freecurrencyapi.Client(os.getenv("cur_key"))
 
 context = {'currencys': ['EUR', 'USD', 'JPY', 'BGN', 'CZK', 'DKK', 'GBP', 'HUF', 'PLN', 'RON', 'SEK', 'CHF', 'ISK',
                          'NOK', 'HRK', 'RUB', 'TRY', 'AUD', 'BRL', 'CAD', 'CNY', 'HKD', 'IDR', 'ILS', 'INR', 'KRW',
