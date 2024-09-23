@@ -1,0 +1,58 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px; /* Increased padding for more spacing */
+    background-color: transparent; /* Fully transparent background */
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out; /* Smooth transition for background and padding */
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.7); /* Add background color on scroll */
+    padding: 10px 30px; /* Slightly decreased padding on scroll */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #42a5f5;
+    text-shadow: 0 0 10px #42a5f5;
+}
+
+/* Navbar Links */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: -30px; /* Adjust the margin to move items further to the left */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 10px 50px;
+    margin-left: -50px; /* Further adjusted margin to move items more to the left */
+}
+
+nav ul li {
+    margin: 0 10px; /* Increased margin for better spacing between items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d3d3d3;
+    transition: color 0.3s, padding 0.3s;
+    font-weight: 500;
+    padding: 10px 5px; /* Increased padding for larger clickable area */
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    color: #42a5f5;
+    background-color: rgba(66, 165, 245, 0.1);
+}
